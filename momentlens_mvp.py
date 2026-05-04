@@ -47,6 +47,7 @@ SF50_CKPT_PATH = BASE_DIR / "Model" / "SF50_Ckp" / "best.pt"
 QUERY_BACKBONE_NAME = "distilbert-base-uncased"
 FEATURE_DIM = 2304
 FEATURE_CLIP_LEN_SEC = 1.0
+VIDEO_TIMELINE_FPS = 24.0
 NUM_FRAMES = 32
 ALPHA = 4
 MAX_QUERY_LEN = 32
@@ -301,20 +302,28 @@ def probe_video(video_path: str):
     return fps, frame_count, duration
 
 
-def decode_video_timeline(video_path: str):
+def decode_video_timeline(video_path: str, timeline_fps: float = VIDEO_TIMELINE_FPS):
     cap = cv2.VideoCapture(video_path)
     if not cap.isOpened():
         raise RuntimeError(f"cannot open video: {video_path}")
 
-    frames = []
     fps = float(cap.get(cv2.CAP_PROP_FPS) or 24.0)
+    step_sec = 1.0 / float(timeline_fps)
+    next_sample_sec = 0.0
+    frame_idx = 0
+    frames = []
+
     while True:
         ok, frame = cap.read()
         if not ok:
             break
-        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-        frame = cv2.resize(frame, (224, 224), interpolation=cv2.INTER_AREA)
-        frames.append(torch.from_numpy(frame).permute(2, 0, 1).contiguous().to(torch.uint8))
+        time_sec = frame_idx / fps
+        if time_sec + 1e-8 >= next_sample_sec:
+            frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+            frame = cv2.resize(frame, (224, 224), interpolation=cv2.INTER_AREA)
+            frames.append(torch.from_numpy(frame).permute(2, 0, 1).contiguous().to(torch.uint8))
+            next_sample_sec += step_sec
+        frame_idx += 1
 
     cap.release()
     if not frames:
@@ -322,13 +331,18 @@ def decode_video_timeline(video_path: str):
     return torch.stack(frames), fps
 
 
-def decode_window_from_timeline(timeline_frames: torch.Tensor, clip_start: float, clip_end: float, fps: float, num_frames: int = NUM_FRAMES):
-    start_frame = max(0, int(math.floor(clip_start * fps)))
-    end_frame = max(start_frame + 1, int(math.ceil(clip_end * fps)))
-    end_frame = min(end_frame, int(timeline_frames.shape[0]))
-    window_frames = timeline_frames[start_frame:end_frame]
-    if window_frames.shape[0] <= 0:
-        raise RuntimeError(f"No frames decoded from window [{clip_start}, {clip_end}]")
+def decode_window_from_timeline(timeline_frames: torch.Tensor, clip_start: float, clip_end: float, num_frames: int = NUM_FRAMES):
+    window_len = 24
+    window_len = max(1, window_len)
+
+    start_idx = int(round(clip_start * VIDEO_TIMELINE_FPS))
+    max_start_idx = max(0, timeline_frames.shape[0] - window_len)
+    start_idx = max(0, min(start_idx, max_start_idx))
+    window_frames = timeline_frames[start_idx:start_idx + window_len]
+
+    if window_frames.shape[0] == 0:
+        nearest = min(max(start_idx, 0), timeline_frames.shape[0] - 1)
+        window_frames = timeline_frames[nearest:nearest + 1]
 
     if window_frames.shape[0] < num_frames:
         pad = window_frames[-1:].repeat(num_frames - window_frames.shape[0], 1, 1, 1)
@@ -422,7 +436,7 @@ def extract_slowfast_features(video_path: str, batch_size: int = 8):
     starts = []
     ends = []
     for start_sec, end_sec in windows:
-        clips.append(decode_window_from_timeline(timeline_frames, start_sec, end_sec, timeline_fps))
+        clips.append(decode_window_from_timeline(timeline_frames, start_sec, end_sec))
         starts.append(start_sec)
         ends.append(end_sec)
 
