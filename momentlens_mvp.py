@@ -18,7 +18,6 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch.nn.utils.rnn import pack_padded_sequence, pad_packed_sequence
 from transformers import AutoModel, AutoTokenizer
-from PIL import Image
 
 try:
     from pytorchvideo.models.hub import slowfast_r50
@@ -302,7 +301,51 @@ def probe_video(video_path: str):
     return fps, frame_count, duration
 
 
+def decode_video_timeline(video_path: str):
+    cap = cv2.VideoCapture(video_path)
+    if not cap.isOpened():
+        raise RuntimeError(f"cannot open video: {video_path}")
+
+    frames = []
+    fps = float(cap.get(cv2.CAP_PROP_FPS) or 24.0)
+    while True:
+        ok, frame = cap.read()
+        if not ok:
+            break
+        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        frame = cv2.resize(frame, (224, 224), interpolation=cv2.INTER_AREA)
+        frames.append(torch.from_numpy(frame).permute(2, 0, 1).contiguous().to(torch.uint8))
+
+    cap.release()
+    if not frames:
+        raise RuntimeError(f"No frames decoded from video: {video_path}")
+    return torch.stack(frames), fps
+
+
+def decode_window_from_timeline(timeline_frames: torch.Tensor, clip_start: float, clip_end: float, fps: float, num_frames: int = NUM_FRAMES):
+    start_frame = max(0, int(math.floor(clip_start * fps)))
+    end_frame = max(start_frame + 1, int(math.ceil(clip_end * fps)))
+    end_frame = min(end_frame, int(timeline_frames.shape[0]))
+    window_frames = timeline_frames[start_frame:end_frame]
+    if window_frames.shape[0] <= 0:
+        raise RuntimeError(f"No frames decoded from window [{clip_start}, {clip_end}]")
+
+    if window_frames.shape[0] < num_frames:
+        pad = window_frames[-1:].repeat(num_frames - window_frames.shape[0], 1, 1, 1)
+        window_frames = torch.cat([window_frames, pad], dim=0)
+    elif window_frames.shape[0] > num_frames:
+        idx = np.linspace(0, window_frames.shape[0] - 1, num_frames).astype(np.int64)
+        window_frames = window_frames[idx]
+
+    window_frames = window_frames.to(torch.float32).div(255.0)
+    window_frames = (window_frames - KINETICS_MEAN) / KINETICS_STD
+    return window_frames
+
+
 def write_predicted_clip(video_path: str, start_sec: float, end_sec: float, output_path: str):
+    # Kept as GIF preview for browser compatibility.
+    from PIL import Image
+
     fps, _, duration = probe_video(video_path)
     fps = fps or 24.0
     start_sec = max(0.0, min(float(start_sec), float(duration)))
@@ -362,38 +405,6 @@ def sample_windows(video_len_sec: float):
     ]
 
 
-def read_window_frames(cap: cv2.VideoCapture, clip_start: float, clip_end: float, fps: float, num_frames: int = NUM_FRAMES):
-    start_frame = max(0, int(math.floor(clip_start * fps)))
-    end_frame = max(start_frame + 1, int(math.ceil(clip_end * fps)))
-    cap.set(cv2.CAP_PROP_POS_FRAMES, start_frame)
-
-    frames = []
-    current_frame = start_frame
-    while current_frame < end_frame:
-        ok, frame = cap.read()
-        if not ok:
-            break
-        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-        frame = cv2.resize(frame, (224, 224), interpolation=cv2.INTER_AREA)
-        frames.append(torch.from_numpy(frame).permute(2, 0, 1).contiguous().to(torch.uint8))
-        current_frame += 1
-
-    if not frames:
-        raise RuntimeError(f"No frames decoded from window [{clip_start}, {clip_end}]")
-
-    clip_frames = torch.stack(frames)
-    if clip_frames.shape[0] < num_frames:
-        pad = clip_frames[-1:].repeat(num_frames - clip_frames.shape[0], 1, 1, 1)
-        clip_frames = torch.cat([clip_frames, pad], dim=0)
-    elif clip_frames.shape[0] > num_frames:
-        idx = np.linspace(0, clip_frames.shape[0] - 1, num_frames).astype(np.int64)
-        clip_frames = clip_frames[idx]
-
-    clip_frames = clip_frames.to(torch.float32).div(255.0)
-    clip_frames = (clip_frames - KINETICS_MEAN) / KINETICS_STD
-    return clip_frames
-
-
 def _prepare_slowfast_inputs(clips: torch.Tensor):
     fast = clips.permute(0, 2, 1, 3, 4).contiguous()
     slow = fast[:, :, ::ALPHA, :, :].contiguous()
@@ -403,24 +414,17 @@ def _prepare_slowfast_inputs(clips: torch.Tensor):
 def extract_slowfast_features(video_path: str, batch_size: int = 8):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     extractor = load_slowfast_extractor()
-    cap = cv2.VideoCapture(video_path)
-    if not cap.isOpened():
-        raise RuntimeError(f"cannot open video: {video_path}")
-    try:
-        fps = float(cap.get(cv2.CAP_PROP_FPS) or 24.0)
-        frame_count = float(cap.get(cv2.CAP_PROP_FRAME_COUNT) or 0.0)
-        duration = frame_count / fps if fps > 0 else 0.0
-        windows = sample_windows(duration)
+    fps, frame_count, duration = probe_video(video_path)
+    timeline_frames, timeline_fps = decode_video_timeline(video_path)
+    windows = sample_windows(duration)
 
-        clips = []
-        starts = []
-        ends = []
-        for start_sec, end_sec in windows:
-            clips.append(read_window_frames(cap, start_sec, end_sec, fps))
-            starts.append(start_sec)
-            ends.append(end_sec)
-    finally:
-        cap.release()
+    clips = []
+    starts = []
+    ends = []
+    for start_sec, end_sec in windows:
+        clips.append(decode_window_from_timeline(timeline_frames, start_sec, end_sec, timeline_fps))
+        starts.append(start_sec)
+        ends.append(end_sec)
 
     feature_chunks = []
     with torch.inference_mode():
