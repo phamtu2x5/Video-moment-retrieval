@@ -1,0 +1,15 @@
+{
+  "sample_idx": 3274,
+  "sample_id": "4RT06_003274",
+  "video_id": "4RT06",
+  "query": "person takes out some food.",
+  "gt_start": 4.800000190734863,
+  "gt_end": 12.0,
+  "pred_start": 8.5,
+  "pred_end": 16.5,
+  "iou": 0.29914531111717224,
+  "duration": 31.66699981689453,
+  "group": "low",
+  "rank_in_group": 3,
+  "video_path": "/content/momentlens_runs/charades_vslnet_phase3/run_003/raw_videos_480p/Charades_v1_480/4RT06.mp4"
+}

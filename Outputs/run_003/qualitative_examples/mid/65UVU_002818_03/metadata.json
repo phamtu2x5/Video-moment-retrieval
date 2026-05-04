@@ -1,0 +1,15 @@
+{
+  "sample_idx": 2818,
+  "sample_id": "65UVU_002818",
+  "video_id": "65UVU",
+  "query": "a person opens the door to the bedroom.",
+  "gt_start": 0.0,
+  "gt_end": 3.200000047683716,
+  "pred_start": 0.5,
+  "pred_end": 6.5,
+  "iou": 0.4153846204280853,
+  "duration": 31.66699981689453,
+  "group": "mid",
+  "rank_in_group": 3,
+  "video_path": "/content/momentlens_runs/charades_vslnet_phase3/run_003/raw_videos_480p/Charades_v1_480/65UVU.mp4"
+}

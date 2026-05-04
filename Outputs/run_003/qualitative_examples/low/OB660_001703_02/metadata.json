@@ -1,0 +1,15 @@
+{
+  "sample_idx": 1703,
+  "sample_id": "OB660_001703",
+  "video_id": "OB660",
+  "query": "person run over to the window to look outside.",
+  "gt_start": 0.0,
+  "gt_end": 5.599999904632568,
+  "pred_start": 8.5,
+  "pred_end": 14.5,
+  "iou": 0.0,
+  "duration": 15.0,
+  "group": "low",
+  "rank_in_group": 2,
+  "video_path": "/content/momentlens_runs/charades_vslnet_phase3/run_003/raw_videos_480p/Charades_v1_480/OB660.mp4"
+}

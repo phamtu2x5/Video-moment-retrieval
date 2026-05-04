@@ -1,0 +1,88 @@
+{
+  "dataset_version": "charades_sta_3fps_v1",
+  "created_at": "2026-04-30T02:57:08.132391",
+  "annotation_source": "https://github.com/26hzhang/VSLNet/tree/master/data/dataset/charades",
+  "video_source": "https://huggingface.co/datasets/yeliudev/VideoMind-Dataset/tree/main/charades_sta",
+  "video_archive": "videos_3fps_480_noaudio.tar.gz",
+  "video_archive_expected_drive_path": "/content/drive/MyDrive/momentlens_datasets/charades_sta_3fps_v1/raw/videos_3fps_480_noaudio.tar.gz",
+  "duration_source_for_training": "ffprobe actual video duration",
+  "model_sampling_fps": 3,
+  "max_timesteps": 96,
+  "split": {
+    "source": "official_train",
+    "val_ratio": 0.2,
+    "split_unit": "video_id",
+    "seed": 42
+  },
+  "counts": {
+    "official_train_pairs": 12408,
+    "train_pairs": 9912,
+    "val_pairs": 2496,
+    "test_pairs": 3720,
+    "official_train_videos": 5338,
+    "train_videos": 4270,
+    "val_videos": 1068,
+    "test_videos": 1334,
+    "video_files_in_archive": 9848,
+    "used_videos": 6672
+  },
+  "cleaning_report": {
+    "train": {
+      "split": "train",
+      "input_samples": 9912,
+      "clean_samples": 9912,
+      "dropped_samples": 0,
+      "clamped_samples": 965
+    },
+    "val": {
+      "split": "val",
+      "input_samples": 2496,
+      "clean_samples": 2496,
+      "dropped_samples": 0,
+      "clamped_samples": 220
+    },
+    "test": {
+      "split": "test",
+      "input_samples": 3720,
+      "clean_samples": 3720,
+      "dropped_samples": 0,
+      "clamped_samples": 384
+    },
+    "total_dropped": 0,
+    "total_clamped": 1569
+  },
+  "verify_report": {
+    "train": {
+      "samples": 9912,
+      "unique_videos": 4270,
+      "bad_time": 0,
+      "missing_video": 0,
+      "bad_duration": 0
+    },
+    "val": {
+      "samples": 2496,
+      "unique_videos": 1068,
+      "bad_time": 0,
+      "missing_video": 0,
+      "bad_duration": 0
+    },
+    "test": {
+      "samples": 3720,
+      "unique_videos": 1334,
+      "bad_time": 0,
+      "missing_video": 0,
+      "bad_duration": 0
+    }
+  },
+  "duration_metadata_comparison": {
+    "common_videos": 9848,
+    "max_abs_diff_seconds": 0.2579645669291324
+  },
+  "artifact_layout": {
+    "annotations": "data/annotations/{train,val,test}.json",
+    "splits": "splits/{train_video_ids,val_video_ids}.txt",
+    "metadata": "data/metadata/",
+    "reports": "data/reports/",
+    "video_archive": "raw/videos_3fps_480_noaudio.tar.gz"
+  }
+}

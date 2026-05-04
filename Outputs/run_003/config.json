@@ -1,0 +1,18 @@
+{
+  "epochs": 100,
+  "batch_size": 16,
+  "num_workers": 12,
+  "lr": 0.0001,
+  "scheduler_tmax_multiplier": 2.0,
+  "scheduler_eta_min": 1e-05,
+  "weight_decay": 0.0001,
+  "max_query_len": 32,
+  "hidden_dim": 128,
+  "query_backbone_name": "distilbert-base-uncased",
+  "foreground_alpha": 0.1,
+  "dropout": 0.2,
+  "foreground_loss_weight": 0.2,
+  "grad_clip": 1.0,
+  "early_stopping_patience": 12,
+  "monitor": "val_R@1_IoU_0.5"
+}

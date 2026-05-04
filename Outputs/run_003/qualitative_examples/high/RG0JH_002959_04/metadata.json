@@ -1,0 +1,15 @@
+{
+  "sample_idx": 2959,
+  "sample_id": "RG0JH_002959",
+  "video_id": "RG0JH",
+  "query": "a person sits on the bed.",
+  "gt_start": 0.0,
+  "gt_end": 8.100000381469727,
+  "pred_start": 0.5,
+  "pred_end": 9.5,
+  "iou": 0.800000011920929,
+  "duration": 18.0,
+  "group": "high",
+  "rank_in_group": 4,
+  "video_path": "/content/momentlens_runs/charades_vslnet_phase3/run_003/raw_videos_480p/Charades_v1_480/RG0JH.mp4"
+}

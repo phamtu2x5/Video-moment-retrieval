@@ -1,0 +1,15 @@
+{
+  "sample_idx": 2986,
+  "sample_id": "9M48H_002986",
+  "video_id": "9M48H",
+  "query": "person puts a phone down on the counter.",
+  "gt_start": 0.0,
+  "gt_end": 8.699999809265137,
+  "pred_start": 8.5,
+  "pred_end": 14.5,
+  "iou": 0.013793090358376503,
+  "duration": 32.0,
+  "group": "low",
+  "rank_in_group": 1,
+  "video_path": "/content/momentlens_runs/charades_vslnet_phase3/run_003/raw_videos_480p/Charades_v1_480/9M48H.mp4"
+}

@@ -1,0 +1,15 @@
+{
+  "sample_idx": 1591,
+  "sample_id": "R5WMI_001591",
+  "video_id": "R5WMI",
+  "query": "a person takes some pictures on a camera.",
+  "gt_start": 2.5,
+  "gt_end": 7.199999809265137,
+  "pred_start": 0.5,
+  "pred_end": 5.5,
+  "iou": 0.447761207818985,
+  "duration": 16.0,
+  "group": "mid",
+  "rank_in_group": 5,
+  "video_path": "/content/momentlens_runs/charades_vslnet_phase3/run_003/raw_videos_480p/Charades_v1_480/R5WMI.mp4"
+}

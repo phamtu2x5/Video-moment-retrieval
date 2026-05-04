@@ -1,0 +1,157 @@
+000 c000 Holding some clothes
+001 c001 Putting clothes somewhere
+002 c002 Taking some clothes from somewhere
+003 c003 Throwing clothes somewhere
+004 c004 Tidying some clothes
+005 c005 Washing some clothes
+006 c006 Closing a door
+007 c007 Fixing a door
+008 c008 Opening a door
+009 c009 Putting something on a table
+010 c010 Sitting on a table
+011 c011 Sitting at a table
+012 c012 Tidying up a table
+013 c013 Washing a table
+014 c014 Working at a table
+015 c015 Holding a phone/camera
+016 c016 Playing with a phone/camera
+017 c017 Putting a phone/camera somewhere
+018 c018 Taking a phone/camera from somewhere
+019 c019 Talking on a phone/camera
+020 c020 Holding a bag
+021 c021 Opening a bag
+022 c022 Putting a bag somewhere
+023 c023 Taking a bag from somewhere
+024 c024 Throwing a bag somewhere
+025 c025 Closing a book
+026 c026 Holding a book
+027 c027 Opening a book
+028 c028 Putting a book somewhere
+029 c029 Smiling at a book
+030 c030 Taking a book from somewhere
+031 c031 Throwing a book somewhere
+032 c032 Watching/Reading/Looking at a book
+033 c033 Holding a towel/s
+034 c034 Putting a towel/s somewhere
+035 c035 Taking a towel/s from somewhere
+036 c036 Throwing a towel/s somewhere
+037 c037 Tidying up a towel/s
+038 c038 Washing something with a towel
+039 c039 Closing a box
+040 c040 Holding a box
+041 c041 Opening a box
+042 c042 Putting a box somewhere
+043 c043 Taking a box from somewhere
+044 c044 Taking something from a box
+045 c045 Throwing a box somewhere
+046 c046 Closing a laptop
+047 c047 Holding a laptop
+048 c048 Opening a laptop
+049 c049 Putting a laptop somewhere
+050 c050 Taking a laptop from somewhere
+051 c051 Watching a laptop or something on a laptop
+052 c052 Working/Playing on a laptop
+053 c053 Holding a shoe/shoes
+054 c054 Putting shoes somewhere
+055 c055 Putting on shoe/shoes
+056 c056 Taking shoes from somewhere
+057 c057 Taking off some shoes
+058 c058 Throwing shoes somewhere
+059 c059 Sitting in a chair
+060 c060 Standing on a chair
+061 c061 Holding some food
+062 c062 Putting some food somewhere
+063 c063 Taking food from somewhere
+064 c064 Throwing food somewhere
+065 c065 Eating a sandwich
+066 c066 Making a sandwich
+067 c067 Holding a sandwich
+068 c068 Putting a sandwich somewhere
+069 c069 Taking a sandwich from somewhere
+070 c070 Holding a blanket
+071 c071 Putting a blanket somewhere
+072 c072 Snuggling with a blanket
+073 c073 Taking a blanket from somewhere
+074 c074 Throwing a blanket somewhere
+075 c075 Tidying up a blanket/s
+076 c076 Holding a pillow
+077 c077 Putting a pillow somewhere
+078 c078 Snuggling with a pillow
+079 c079 Taking a pillow from somewhere
+080 c080 Throwing a pillow somewhere
+081 c081 Putting something on a shelf
+082 c082 Tidying a shelf or something on a shelf
+083 c083 Reaching for and grabbing a picture
+084 c084 Holding a picture
+085 c085 Laughing at a picture
+086 c086 Putting a picture somewhere
+087 c087 Taking a picture of something
+088 c088 Watching/looking at a picture
+089 c089 Closing a window
+090 c090 Opening a window
+091 c091 Washing a window
+092 c092 Watching/Looking outside of a window
+093 c093 Holding a mirror
+094 c094 Smiling in a mirror
+095 c095 Washing a mirror
+096 c096 Watching something/someone/themselves in a mirror
+097 c097 Walking through a doorway
+098 c098 Holding a broom
+099 c099 Putting a broom somewhere
+100 c100 Taking a broom from somewhere
+101 c101 Throwing a broom somewhere
+102 c102 Tidying up with a broom
+103 c103 Fixing a light
+104 c104 Turning on a light
+105 c105 Turning off a light
+106 c106 Drinking from a cup/glass/bottle
+107 c107 Holding a cup/glass/bottle of something
+108 c108 Pouring something into a cup/glass/bottle
+109 c109 Putting a cup/glass/bottle somewhere
+110 c110 Taking a cup/glass/bottle from somewhere
+111 c111 Washing a cup/glass/bottle
+112 c112 Closing a closet/cabinet
+113 c113 Opening a closet/cabinet
+114 c114 Tidying up a closet/cabinet
+115 c115 Someone is holding a paper/notebook
+116 c116 Putting their paper/notebook somewhere
+117 c117 Taking paper/notebook from somewhere
+118 c118 Holding a dish
+119 c119 Putting a dish/es somewhere
+120 c120 Taking a dish/es from somewhere
+121 c121 Wash a dish/dishes
+122 c122 Lying on a sofa/couch
+123 c123 Sitting on sofa/couch
+124 c124 Lying on the floor
+125 c125 Sitting on the floor
+126 c126 Throwing something on the floor
+127 c127 Tidying something on the floor
+128 c128 Holding some medicine
+129 c129 Taking/consuming some medicine
+130 c130 Putting groceries somewhere
+131 c131 Laughing at television
+132 c132 Watching television
+133 c133 Someone is awakening in bed
+134 c134 Lying on a bed
+135 c135 Sitting in a bed
+136 c136 Fixing a vacuum
+137 c137 Holding a vacuum
+138 c138 Taking a vacuum from somewhere
+139 c139 Washing their hands
+140 c140 Fixing a doorknob
+141 c141 Grasping onto a doorknob
+142 c142 Closing a refrigerator
+143 c143 Opening a refrigerator
+144 c144 Fixing their hair
+145 c145 Working on paper/notebook
+146 c146 Someone is awakening somewhere
+147 c147 Someone is cooking something
+148 c148 Someone is dressing
+149 c149 Someone is laughing
+150 c150 Someone is running somewhere
+151 c151 Someone is going from standing to sitting
+152 c152 Someone is smiling
+153 c153 Someone is sneezing
+154 c154 Someone is standing up from somewhere
+155 c155 Someone is undressing
+156 c156 Someone is eating something

@@ -1,0 +1,17 @@
+{
+  "model_sampling_fps": 3,
+  "max_timesteps": 96,
+  "sigma_seconds": 0.67,
+  "clip_backbone": "ViT-B-32",
+  "image_size": 224,
+  "batch_size": 16,
+  "epochs": 5,
+  "lr_clip_backbone": 1e-06,
+  "lr_projection_head": 0.0001,
+  "lr_temporal_head": 0.0001,
+  "frame_encode_chunk_size": 32,
+  "weight_decay_clip": 0.001,
+  "weight_decay_head": 0.01,
+  "cache_workers": 12,
+  "seed": 42
+}

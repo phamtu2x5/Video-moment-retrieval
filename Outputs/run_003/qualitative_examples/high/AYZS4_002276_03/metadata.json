@@ -1,0 +1,15 @@
+{
+  "sample_idx": 2276,
+  "sample_id": "AYZS4_002276",
+  "video_id": "AYZS4",
+  "query": "person sitting down at a kitchen tables.",
+  "gt_start": 0.0,
+  "gt_end": 8.199999809265137,
+  "pred_start": 0.5,
+  "pred_end": 7.5,
+  "iou": 0.8536585569381714,
+  "duration": 50.33399963378906,
+  "group": "high",
+  "rank_in_group": 3,
+  "video_path": "/content/momentlens_runs/charades_vslnet_phase3/run_003/raw_videos_480p/Charades_v1_480/AYZS4.mp4"
+}

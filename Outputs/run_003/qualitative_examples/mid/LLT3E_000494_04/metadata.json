@@ -1,0 +1,15 @@
+{
+  "sample_idx": 494,
+  "sample_id": "LLT3E_000494",
+  "video_id": "LLT3E",
+  "query": "person they walk through a doorway.",
+  "gt_start": 15.399999618530273,
+  "gt_end": 22.399999618530273,
+  "pred_start": 12.5,
+  "pred_end": 19.5,
+  "iou": 0.4141414761543274,
+  "duration": 27.0,
+  "group": "mid",
+  "rank_in_group": 4,
+  "video_path": "/content/momentlens_runs/charades_vslnet_phase3/run_003/raw_videos_480p/Charades_v1_480/LLT3E.mp4"
+}

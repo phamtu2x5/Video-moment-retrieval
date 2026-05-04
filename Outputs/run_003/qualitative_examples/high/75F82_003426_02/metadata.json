@@ -1,0 +1,15 @@
+{
+  "sample_idx": 3426,
+  "sample_id": "75F82_003426",
+  "video_id": "75F82",
+  "query": "a person is standing in a doorway sneezing.",
+  "gt_start": 0.0,
+  "gt_end": 9.399999618530273,
+  "pred_start": 0.5,
+  "pred_end": 8.5,
+  "iou": 0.8510638475418091,
+  "duration": 21.333999633789062,
+  "group": "high",
+  "rank_in_group": 2,
+  "video_path": "/content/momentlens_runs/charades_vslnet_phase3/run_003/raw_videos_480p/Charades_v1_480/75F82.mp4"
+}

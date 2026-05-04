@@ -1,0 +1,15 @@
+{
+  "sample_idx": 1496,
+  "sample_id": "R971Z_001496",
+  "video_id": "R971Z",
+  "query": "a person opens the door to a walk-in closet.",
+  "gt_start": 0.0,
+  "gt_end": 6.099999904632568,
+  "pred_start": 0.5,
+  "pred_end": 5.5,
+  "iou": 0.819672167301178,
+  "duration": 36.33399963378906,
+  "group": "high",
+  "rank_in_group": 5,
+  "video_path": "/content/momentlens_runs/charades_vslnet_phase3/run_003/raw_videos_480p/Charades_v1_480/R971Z.mp4"
+}

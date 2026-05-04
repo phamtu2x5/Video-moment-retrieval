@@ -1,0 +1,15 @@
+{
+  "sample_idx": 3639,
+  "sample_id": "ZFT06_003639",
+  "video_id": "ZFT06",
+  "query": "person takes a glass out from the refrigerator.",
+  "gt_start": 18.899999618530273,
+  "gt_end": 25.700000762939453,
+  "pred_start": 16.5,
+  "pred_end": 23.5,
+  "iou": 0.5,
+  "duration": 31.0,
+  "group": "mid",
+  "rank_in_group": 1,
+  "video_path": "/content/momentlens_runs/charades_vslnet_phase3/run_003/raw_videos_480p/Charades_v1_480/ZFT06.mp4"
+}

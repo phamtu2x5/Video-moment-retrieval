@@ -1,0 +1,62 @@
+{
+  "dataset_root": "/content/drive/MyDrive/momentlens_datasets/charades_raw_from_scratch",
+  "annotation_file_train": "/content/charades_raw_from_scratch/raw/annotations/Charades/Charades_v1_train.csv",
+  "annotation_file_test": "/content/charades_raw_from_scratch/raw/annotations/Charades/Charades_v1_test.csv",
+  "video_root": "/content/charades_raw_from_scratch/raw/videos_480p",
+  "num_train_videos": 7985,
+  "num_test_videos": 1863,
+  "num_total_videos": 9848,
+  "num_val_videos_derived": 798,
+  "num_train_videos_derived": 7187,
+  "num_classes": 157,
+  "avg_actions_per_video": 6.75264012997563,
+  "median_actions_per_video": 6.0,
+  "avg_video_length_sec": 29.663260560519905,
+  "median_video_length_sec": 30.54,
+  "avg_action_interval_sec": 12.757266766917294,
+  "median_action_interval_sec": 8.8,
+  "train_split_class_count_top5": [
+    [
+      97,
+      1883
+    ],
+    [
+      154,
+      1722
+    ],
+    [
+      59,
+      1628
+    ],
+    [
+      61,
+      1442
+    ],
+    [
+      106,
+      1434
+    ]
+  ],
+  "scene_counts_top5": [
+    [
+      "Kitchen",
+      1541
+    ],
+    [
+      "Bedroom",
+      1503
+    ],
+    [
+      "Living room",
+      1460
+    ],
+    [
+      "Bathroom",
+      672
+    ],
+    [
+      "Home Office / Study (A room in a house used for work)",
+      562
+    ]
+  ]
+}

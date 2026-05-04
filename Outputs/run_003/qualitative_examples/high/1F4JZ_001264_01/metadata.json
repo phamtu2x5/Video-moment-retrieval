@@ -1,0 +1,15 @@
+{
+  "sample_idx": 1264,
+  "sample_id": "1F4JZ_001264",
+  "video_id": "1F4JZ",
+  "query": "one person takes some medicine.",
+  "gt_start": 2.0,
+  "gt_end": 8.699999809265137,
+  "pred_start": 2.5,
+  "pred_end": 8.5,
+  "iou": 0.89552241563797,
+  "duration": 32.66699981689453,
+  "group": "high",
+  "rank_in_group": 1,
+  "video_path": "/content/momentlens_runs/charades_vslnet_phase3/run_003/raw_videos_480p/Charades_v1_480/1F4JZ.mp4"
+}

@@ -1,0 +1,15 @@
+{
+  "sample_idx": 374,
+  "sample_id": "BM3UJ_000374",
+  "video_id": "BM3UJ",
+  "query": "a person walks through the entryway holding a glass.",
+  "gt_start": 6.400000095367432,
+  "gt_end": 17.299999237060547,
+  "pred_start": 2.5,
+  "pred_end": 8.5,
+  "iou": 0.14189189672470093,
+  "duration": 33.66699981689453,
+  "group": "low",
+  "rank_in_group": 5,
+  "video_path": "/content/momentlens_runs/charades_vslnet_phase3/run_003/raw_videos_480p/Charades_v1_480/BM3UJ.mp4"
+}
